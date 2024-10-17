@@ -81,9 +81,13 @@ A execução realiza a simulação de um número definido de arenas, utilizando 
 Para simular os cenários, eu considerei 4 opções: normal, snipe na mesma faixa de mmr, snipe em times levemente acima do seu rating e snipe em times muito acima do seu rating.
 
 Precisei criar uma definição para esses cenários que é o seguinte:
+
 normal = joina aleatoriamente, sem se importar com quem será o adversário.
+
 snipe na mesma faixa = tenta cair em arenas em que os times estarão entre 150 mmr abaixo ou acima do seu rating.
+
 snipe em times levemente acima do seu rating = tenta cair em arenas com mmr entre 100 e 300 acima do seu rating.
+
 snipe em times muito acima do seu rating = tentar cair em arenas com mmr entre 400 e 600 acima do seu rating.
 
 Criei uma taxa de sucesso do snipe, pois é possível que falhe em algum momento e o player caia em uma arena diferente da que ele imaginava, como padrão coloquei essa taxa em 96%, a versão mais recente do addon da minha guild grava um histórico de arenas disputadas, neste histórico consta o mmr dos adversários e ele pode ser inspectado por outros usuários, eu dei inspect no histórico de um jogador que eu sei que faz o snipe, e das últimas 100 arenas, apenas 4 tinham mmr baixo, portanto vou utilizar 96% como padrão.
@@ -91,17 +95,25 @@ Criei uma taxa de sucesso do snipe, pois é possível que falhe em algum momento
 Para o cenário "normal" eu utilizei uma distribuição do mmr dos possíveis adversários que é baseada em uma estimativa totalmente subjetiva da minha parte, por não ter acesso às informações sobre mmr dos players do servidor.
 
 Os resultados apresentados são:
+
 rating potencial máximo = rating máximo atingido durante toda a série simulada.
+
 rating médio estabilizado = rating médio da última metade da série.
+
 partidas necessárias para atingir cada objetivo (shoulder, t1, t2 etc)
+
 partidas necessárias para ultrapassar o rating do rank 1
 
 Limitações conhecidas do simulador:
+
 1 - a distribuição do mmr adversário para quem joina aleatoriamente é uma estimativa, pode não conduzir com os números reais do servidor.
+
 2 - o modelo de simulação considera que os players vão ser fieis ao cenário escolhido para snipe, e no mundo real um player pode começar a série com uma idéia de snipe e mudar de estratégia no meio da série.
+
 3 - o rating do rank 1 é fixo, e no mundo real ele pode ir aumentando com o tempo, porém caso ele possa subir no modelo, o rating vai ficar extremamente alto em alguns cenários de winrate alto, pois o mmr adversário teria um incremento constante, porém isso não seria realistico pois o player no topo do ranking teria que jogar dezenas de milhares de partidas apenas contra o top 5 do servidor, o que não é esperado.
 
 Como utilizar?
+
 Basta copiar o código contido no arquivo simulador.lua para qualquer compilador e executar, no inicio do arquivo há instruções para alterar os parametros da simulação.
 
 Cuidado ao utilizar compiladores online, pois a maioria possui um limite de processamento e caso opte por colocar muitas partidas simuladas e muitas seeds, pode dar timeout.
