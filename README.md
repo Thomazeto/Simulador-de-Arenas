@@ -4,11 +4,13 @@ Simulador da evolução de rating em arenas soloqueue no servidor WoW-Brasil.
 --------- ############### O que está acontecendo hoje? ############### ---------
 
 Descrição do problema:
+
 Atualmente, no sistema de soloqueue do servidor é possível inflar seu rating de forma artificial, exploitando uma "falha" do projeto na formação dos times, considerando que o sistema de cálculo de rating ganho ou perdido por partida foi pensado em um sistema diferente de matchmaking.
 
 O exploit se resume a escolher propositadamente cair contra times com MMR muito maior que o seu rating atual, o que é impossível nas arenas 2v2 ou 3v3, como mostrarei:
 
 Nas arenas 2v2 ou 3v3, a fila funciona da seguinte forma: ao entrar na fila, vamos supor que com 1900 de mmr, o sistema vai procurar times com mmr próximo ao seu, algo entre 1800 mmr e 2000 mmr, após alguns segundos sem encontrar um time nesse intervalo, o sistema vai aumentar a tolerância e procurar equipes entre 1700 e 2100 mmr, e assim sucessivamente até chegar em um limite, e caso não encontre nenhum time em 10 minutos, dentro desse limite, o sistema libera para que você jogue contra qualquer outro time da fila, portanto é inviável para esse player de 1900 de mmr tentar cair de forma proposital contra um time de por exemplo 3000 de mmr, pois quem escolhe seu adversário é o servidor.
+
 Por esse funcionamento, chamamos de "fila" por uma questão de conveniência, pois na verdade é um sistema de registros e casamentos, como um booking de ofertas em bolsa de valores, ou o tinder, o foco é em encontrar dois registros compativeis, independente de quanto tempo eles estão inscritos ali.
 
 Nas arenas soloqueue, a fila funciona de fato como uma fila, pois assim que existem 6 players registrados, o sistema pega esses players e forma dois times, tentando equilibrar o MMR para que fiquem o mais parelho possível.
@@ -18,10 +20,15 @@ Entendendo esse funcionamento, um player pode entrar na fila em um momento calcu
 Qual o problema disso?
 
 O MMR do seu adversário influencia de forma MUITO forte o rating que você vai ganhar ou perder na arena, usando aquele player com 1900 de mmr como exemplo novamente, vamos supor que ele tenha também 1900 de rating:
+
 Contra times de 1900 de mmr, ele ganharia e perderia 12 de rating por partida.
+
 Contra times de 1700 de mmr, ele ganharia 8 e perderia -16.
+
 Contra times de 2100 de mmr, ele ganharia 17 e perderia -8.
+
 Contra times de 2500 de mmr, ele ganharia 22 e perderia -2.
+
 Agora, contra times de 3000 de mmr, ele ganharia 24 e perderia 0, sim, 0!
 
 Portanto, veja que se ele pode escolher contra quem quer cair, não há nenhuma vantagem escolher jogar contra times low, pois jogando contra times altos seu rating vai subir de forma garantida, independente do desempenho desse player, não é mais uma questão de "será que sou capaz de chegar a X rating?" e passa a ser uma questão de tempo para alcançar a marca desejada.
@@ -38,14 +45,19 @@ Hoje um player que logue e tenha vontade de fazer arena soloq, vai estar dentro 
 A outra opção seria alterar o sistema de pontuação das partidas, para evitar o abuso, ou limitar o beneficio recebido ao abusar do sistema, tendo a preocupação de que essas alterações atinjam os seguintes objetivos: mantenha o sistema bastante parecido com o atual para quem não abusa da fila, não prejudique players que usem de forma limitada esse abuso apenas para evitar cair contra times com mmr muito abaixo do seu nível (o que no 2v2 e 3v3 seria tão improvável quanto o oposto).
 
 Minha proposta é criar um "cap" para a diferença de MMR entre o player e seus adversários, mas não na formação da luta, e sim no cálculo da pontuação.
+
 Eu optei por realizar a inclusão desse ajuste no cálculo da probabilidade de vitória, em vez de alterar diretamente a pontuação.
 
 Basicamente se criariam tetos para o mmr adversário, tetos subjetivos, os quais proponho que tenham 3 fases:
+
 1 - para jogadores com menos do que 2000 de rating, o sistema vai limitar o mmr de seus adversários em no máximo 2000, e no mínimo sendo (seu rating - 400).
+
 2 - para jogadores entre 2000 e 2200 de rating, o limite máximo vai ser de 2200 e o mínimo de (rating - 500).
+
 3 - acima de 2200, o limite máximo vai ser o seu próprio rating, e o mínimo vai ser (rating - 600 ou 1700, o que for menor).
 
 Assim, quanto mais próximo de 2000 o player estiver, maior vai ficando a dificuldade, pois a quantia máxima de rating ganho por partida vai ficar menor, enquanto que a quantidade máxima perdida fica estável.
+
 Passando dessa fase, se repete com o objetivo dos 2200 rating, e por fim ao chegar na fase final, a dificuldade de subir o rating aumenta e se mantém no mesmo nível independente do rating alcançado.
 
 Motivação dos valores: 2000 é um objetivo comum a todos os players, pois fornece a shoulder e achiev, 2200 segue o mesmo pensamento, fornecendo a arma tier 2 e achiev, e a partir de 2200 os players concorrem por competitividade, não há um objetivo comum a todos, alguns querem ir até 2300 para pegar a tabard, outros querem chegar a 2500 pois é um número alto, outros querem a barreira mental dos 3000, outros querem chegar no rank 10, no rank 1, em fim, é muito individual, mas o que há de comum é a competitividade.
