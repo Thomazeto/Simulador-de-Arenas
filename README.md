@@ -124,6 +124,10 @@ Basta copiar o código contido no arquivo simulador.lua para qualquer compilador
 
 Cuidado ao utilizar compiladores online, pois a maioria possui um limite de processamento e caso opte por colocar muitas partidas simuladas e muitas seeds, pode dar timeout.
 
+Dependendo do compilador utilizado também pode haver falhas na consistência da randomseed, depende da implementação do sistema de RNG naquele compilador.
+
+O compilador de lua do replit.com conseguiu rodar sem problemas execuções com 20 milhões de arenas simuladas, e não possui qualquer bug em questão da randomseed, mantendo a sequência de rng intacta entre os cenários.
+
 
 
 Killax
