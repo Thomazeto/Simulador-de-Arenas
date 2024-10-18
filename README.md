@@ -92,7 +92,7 @@ snipe na mesma faixa = tenta cair em arenas em que os times estarão entre 150 m
 
 snipe em times levemente acima do seu rating = tenta cair em arenas com mmr entre 100 e 300 acima do seu rating.
 
-snipe em times muito acima do seu rating = tentar cair em arenas com mmr entre 400 e 600 acima do seu rating.
+snipe em times muito acima do seu rating = tenta cair em arenas com mmr entre 400 e 600 acima do seu rating.
 
 
 Criei uma taxa de sucesso do snipe, pois é possível que falhe em algum momento e o player caia em uma arena diferente da que ele imaginava, como padrão coloquei essa taxa em 96%, a versão mais recente do addon da minha guild grava um histórico de arenas disputadas, neste histórico consta o mmr dos adversários e ele pode ser inspectado por outros usuários, eu dei inspect no histórico de um jogador que eu sei que faz o snipe, e das últimas 100 arenas, apenas 4 tinham mmr baixo, portanto vou utilizar 96% como padrão.
@@ -115,9 +115,9 @@ Limitações conhecidas do simulador:
 
 1 - a distribuição do mmr adversário para quem joina aleatoriamente é uma estimativa, pode não coincidir com os números reais do servidor.
 
-2 - o modelo de simulação considera que os players vão ser fieis ao cenário escolhido para snipe, e no mundo real um player pode começar a série com uma idéia de snipe e mudar de estratégia no meio da série.
+2 - o modelo de simulação considera que os players vão ser fiéis ao cenário escolhido para snipe, e no mundo real um player pode começar a série com uma idéia de snipe e mudar de estratégia no meio da série.
 
-3 - o rating do rank 1 é fixo, e no mundo real ele pode ir aumentando com o tempo, porém caso ele possa subir no modelo, o rating ficaria extremamente inflado em alguns cenários de winrate alto, pois o mmr adversário teria um incremento constante, resultando em ganhos constantes, porém isso não seria realistico pois para isso ocorrer o player no topo do ranking teria que jogar dezenas de milhares de partidas apenas contra o top 5 do servidor, o que não é esperado.
+3 - o rating do rank 1 é fixo, e no mundo real ele pode ir aumentando com o tempo, é complicado implementar esse aumento no modelo pois acabaria convergindo para algo semelhante a um wintrade (o rank 1 jogando milhares de partidas contra o rank 2).
 
 
 Como utilizar?
