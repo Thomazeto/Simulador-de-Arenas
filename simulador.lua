@@ -23,7 +23,7 @@ local simular_sem_snipe = true -- boolean
 local simular_evitar_lows = true -- boolean
 local simular_snipe = true -- boolean
 local simular_snipe_forte = true -- boolean
-local simular_modelo_atal = true -- boolean
+local simular_modelo_atual = true -- boolean
 local simular_modelo_proposto = true -- boolean
 local mostrar_evolucao = true -- boolean
 --[[
@@ -34,7 +34,7 @@ simular_sem_snipe = simula o player joinando aleatoriamente
 simular_evitar_lows = simula o player dando snipe em times com 150 de mmr a mais ou a menos que seu rating
 simular_snipe = simula o player dando snipe em times com 100 a 300 de mmr a mais que seu rating
 simular_snipe_forte = simula o player dando snipe em times com 400 a 600 de mmr acima do seu rating
-simular_modelo_atal = simula o cenário utilizando o cálculo atual do servidor
+simular_modelo_atual = simula o cenário utilizando o cálculo atual do servidor
 simular_modelo_proposto = simula o cenário utilizando a minha proposta
 mostrar_evolucao = mostra as partidas necessárias para se chegar aos pontos de interesse, como shoulder e arma
 ]]
@@ -253,7 +253,7 @@ for i = 1, #seeds do
 
   if simular_sem_snipe then
     print("\n>> joinando aleatoriamente:")
-    if simular_modelo_atal then
+    if simular_modelo_atual then
       simular(seeds[i], false, "NORMAL")
     end
     if simular_modelo_proposto then
@@ -263,7 +263,7 @@ for i = 1, #seeds do
 
   if simular_evitar_lows then
     print("\n>> tentando cair sempre com times próximos do seu rating:")
-    if simular_modelo_atal then
+    if simular_modelo_atual then
       simular(seeds[i], false, "EVITAR_LOW")
     end
     if simular_modelo_proposto then
@@ -273,7 +273,7 @@ for i = 1, #seeds do
 
   if simular_snipe then
     print("\n>> tentando dar snipe para cair contra times ligeiramente acima do seu rating:")
-    if simular_modelo_atal then
+    if simular_modelo_atual then
       simular(seeds[i], false, "SNIPE")
     end
     if simular_modelo_proposto then
@@ -283,7 +283,7 @@ for i = 1, #seeds do
 
   if simular_snipe_forte then
     print("\n>> tentando dar snipe em times MUITO acima do seu rating:")
-    if simular_modelo_atal then
+    if simular_modelo_atual then
       simular(seeds[i], false, "SNIPE_FORTE")
     end
     if simular_modelo_proposto then
