@@ -64,13 +64,15 @@ Motivação dos valores: 2000 é um objetivo comum a todos os players, pois forn
 
 Para poder comparar se a idéia teria resultados positivos e o que mudaria em relação ao sistema atual, eu construi esse simulador, e a conclusão é:
 
-~ Para quem joina aleatoriamente, sem se importar com nada disso, continuaria tendo basicamente o mesmo resultado.
+~ Para quem joina aleatoriamente, sem se importar com nada disso, continuaria tendo basicamente o mesmo resultado, e quem faz snipe teria uma diminuição entre a diferença de jogar contra times da sua faixa de rating e times muito maiores.
+
+~ Para joagdores bons ( 66% + de vitórias) que fazem snipe, o rating médio alcançado seria praticamente o mesmo, porém levaria um pouco mais de tempo para chegar nesse rating (são os players que vencem com frequência os outros, em qualquer modelo vão ficar no topo).
 
 ~ Para jogadores medianos (próximo de 50% de vitórias) que fazem snipe, o rating médio alcançado teria uma redução porém esse player ainda alcançaria ratings bons, capaz de comprar T2 e tabard (se esse player vence metade dos times que possuem mmr de t2 e tabard, ele merece chegar nesse ponto também).
 
-~ Para joagdores bons (~ 66% de vitórias) que fazem snipe, o rating médio alcançado seria praticamente o mesmo, porém levaria mais tempo para chegar nesse rating (são os players que vencem com frequência os outros, em qualquer modelo vão ficar no topo).
-
 ~ Para Jogadores ruins (~ 40% de vitória) que fazem snipe, o rating médio alcançado teria uma queda consideravel, e alcançar a shoulder e a t2 para esses players seria um desafio bem maior que é hoje (está dentro da lógica de que é mais dificil pra ele do que para um player mediano, mas ainda é possível).
+
+~ Para jogadores muito ruins (~ 33% de vitória) que fazem snipe, o rating médio alcançado tem uma queda brusca, dificultando de forma muito grande o ganho de rating.
 
 
 
